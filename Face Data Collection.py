@@ -20,11 +20,30 @@ cam = cv2.VideoCapture(0)
 count = 1
 
 while count<31:
+
     _,img = cam.read()
     grayImg = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
     # 'detectMultiScale' is used for detecting 
-    FaceOnly = haarFaceClassifier.detectMultiScale(grayImg, 1.3, 5)
-    
+    class_face = haarFaceClassifier.detectMultiScale(grayImg, 1.3, 5)
+
+    # Cropping out face area
+    for (x,y,w,h) in class_face:
+        cv2.rectangle(img, (x,y), (x+w, y+h), (0,255,0), 2)
+        FaceOnly = grayImg[y:y+h,x+w]
+        # Width, Height of image
+        Face_resize = cv2.resize(FaceOnly, (130,100))
+        cv2.imwrite("%s/%s.jpg" %(path,count), Face_resize)
+        count += 1
+    cv2.imshow('img',img)
+    key = cv2.waitKey(0)
+    if key == 0:
+        break
+
+print("Face Data Captured")
+cam.release()
+cv2.destroyAllWindows
+
 
 
 

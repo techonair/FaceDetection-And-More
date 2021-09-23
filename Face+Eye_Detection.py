@@ -1,4 +1,4 @@
-import cv2, os
+import cv2
 
 haarFace= "E:\\FaceDetection-And-More\\Haarcascade\\haarcascade_frontalface_default.xml"
 haarEye = "E:\\FaceDetection-And-More\\Haarcascade\\haarcascade_eye.xml"
@@ -26,3 +26,10 @@ while True:
     print(text)
     cv2.putText(img, text, (10,20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color=(0,255,0), 2)
     cv2.putText(img, eyetext, (480,490) ,cv2.FONT_HERSHEY_SIMPLEX, 0.5, color=(0,255,0), 2)
+    cv2.imshow('Face+Eye_Detection', img)
+    key = cv2.waitKey(1) & 0xFF
+    if key == ord('q'):
+        break
+
+cam.release()
+cv2.destroyAllWindows

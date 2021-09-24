@@ -39,16 +39,16 @@ while True:
     # For left eye
     for (a,b,c,d) in L_eye_feature:
         eyetext = "Eyes Detected"
-        cv2.rectangle(img, (a,b), (a+c,b+d), (0,255,0), 2)
+        cv2.rectangle(img, (a,b), (a+c,b+d), (0,255,255), 2)
         #cv2.circle(img, (a,b), 20, (0,0,255), 2)
-        cv2.putText(img, "Left-Eye", (a-3,b-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color=(255,0,0))
+        cv2.putText(img, "Left-Eye", (a-3,b-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color=(0,0,255))
 
     # For right eye 
     for (p,q,r,s) in R_eye_feature:
         eyetext = "Eyes Detected"
-        cv2.rectangle(img, (p,q), (p+r,q+s), (0,255,0), 2)
+        cv2.rectangle(img, (p,q), (p+r,q+s), (0,255,255), 2)
         #cv2.circle(img, (p,q), 20, (0,0,255), 2)
-        cv2.putText(img, "Right-Eye", (p-3,q-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color=(255,0,0))
+        cv2.putText(img, "Right-Eye", (p-3,q-10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, color=(0,0,255))
 
     # printing text on terminal
     print(facetext)
